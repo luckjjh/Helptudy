@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="kr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <meta name="copyright" content="MACode ID, https://macodeid.com/" />
+
+    <title>스터디 모집 웹 Helptudy</title>
+
+    <link rel="stylesheet" href="../assets/css/maicons.css" />
+
+    <link rel="stylesheet" href="../assets/css/bootstrap.css" />
+
+    <link rel="stylesheet" href="../assets/vendor/animate/animate.css" />
+
+    <link rel="stylesheet" href="../assets/css/theme.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+  </head>
+  <body>
+    <!-- Back to top button -->
+    <div class="back-to-top"></div>
+
+    <header>
+      <nav
+        class="navbar navbar-expand-lg navbar-light bg-white sticky"
+        data-offset="500"
+      >
+        <div class="container">
+          <a href="/" class="navbar-brand"
+            >Help<span class="text-primary">tudy</span></a
+          >
+
+          <button
+            class="navbar-toggler"
+            data-toggle="collapse"
+            data-target="#navbarContent"
+            aria-controls="navbarContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="navbar-collapse collapse" id="navbarContent">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active">
+                <form action="/" method="get">
+                  <button class="nav-link btn">Home</button>
+                </form>
+              </li>
+              <li class="nav-item">
+                <form action="/study" method="get">
+                  <button class="nav-link btn">스터디 모집&참가</button>
+                </form>
+              </li>
+              <li class="nav-item">
+                <form action="/mypage" method="get">
+                  <button class="nav-link btn">마이페이지</button>
+                </form>
+              </li>
+              <li class="nav-item">
+                <form action="/login" method="get">
+                  <button class="nav-link btn">Sign in</button>
+                </form>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <div class="container">
+        <div class="page-banner home-banner">
+          <div class="row align-items-center flex-wrap-reverse h-100">
+            <div class="col-md-6 py-5 wow fadeInLeft">
+              <h1 class="mb-4">
+                스터디 모집 <br />웹 서비스 <br />Helptudy입니다.
+              </h1>
+            </div>
+            <div class="col-md-6 py-5 wow zoomIn">
+              <div class="img-fluid text-center">
+                <img src="../assets/img/study.png" style="width: 80%" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="page-section">
+      <div class="container">
+        <div class="row">
+          <% for (let i = 0; i < studyList.length; i ++) { %>
+          <div class="col-lg-4">
+            <div class="card-service wow fadeInUp">
+              <div class="body">
+                <form action="/joinStudy" method="post">
+                  <h5 id="studyname" class="text-secondary">
+                    study name : <%= studyList[i].name%>
+                  </h5>
+                  <input
+                    type="hidden"
+                    name="studyname"
+                    value="<%= studyList[i].name%>"
+                  />
+                  <p>
+                    topic : <%= studyList[i].topic%> <br />최대인원 : <%=
+                    studyList[i].maxMember%> <br />모임 장소 : <%=
+                    studyList[i].place%>
+                  </p>
+                  <button class="btn btn-primary">참가하기</button>
+                </form>
+              </div>
+            </div>
+          </div>
+          <% } %>
+        </div>
+      </div>
+    </div>
+    <script src="../assets/js/jquery-3.5.1.min.js"></script>
+
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+
+    <script src="../assets/js/google-maps.js"></script>
+
+    <script src="../assets/vendor/wow/wow.min.js"></script>
+
+    <script src="../assets/js/theme.js"></script>
+  </body>
+</html>
